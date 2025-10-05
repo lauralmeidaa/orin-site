@@ -14,13 +14,15 @@
     <nav class="nav">
         <div class="nav-container">
             <div class="logo">
-                <img src="orin-logo.png" alt="Orin" class="logo-icon">
-                <span>Orin</span>
+                <a href="index.html" style="display: flex; align-items: center; gap: 1rem; text-decoration: none; color: inherit;">
+                    <img src="Assets/orin-logo-black.png" alt="Orin" class="logo-icon">
+                    <span>Orin</span>
+                </a>
             </div>
             <div class="nav-links">
-                <a href="#about">About us</a>
-                <a href="#science">The Science</a>
-                <a href="#features">Features</a>
+                <a href="about.html">About us</a>
+                <a href="science.html">The Science</a>
+                <a href="features.html">Features</a>
             </div>
         </div>
     </nav>
@@ -28,9 +30,110 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Calm the <img src="chaos-text.png" alt="chaos" class="chaos-img"> of your mind.</h1>
+            <h1 class="hero-title">Calm the <span class="chaos">chaos</span> of your mind.</h1>
             <p class="hero-subtitle">Your thoughts sorted so you can focus without forcing it.</p>
-            <button class="cta-button">Join the Waitlist</button>
+            <button class="cta-button" id="waitlistBtn">Join the Waitlist</button>
+        </div>
+    </section>
+
+    <!-- Waitlist Modal -->
+    <div class="modal-overlay" id="waitlistModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 class="modal-title">Join the Waitlist</h2>
+            <p class="modal-subtitle">Be the first to know when Orin launches.</p>
+            <form class="waitlist-form" id="waitlistForm">
+                <input type="email" class="email-input" placeholder="Enter your email" required>
+                <button type="submit" class="submit-button">Join</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Second Section -->
+    <section class="section-two">
+        <div class="comparison-container">
+            <h2 class="comparison-title">Organize less,<br><em>think more.</em></h2>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <span class="comparison-badge before">Before</span>
+                    <div class="tools-display">
+                        <img src="Assets/gogogle_tasks.webp" alt="Google Tasks" class="app-icon">
+                        <img src="Assets/notion.png" alt="Notion" class="app-icon">
+                        <img src="Assets/applenotes1.png" alt="Notes App" class="app-icon">
+                    </div>
+                    <div class="comparison-list">
+                        <div class="comparison-point negative">
+                            <span class="icon">✕</span>
+                            <span>Thoughts scattered everywhere</span>
+                        </div>
+                        <div class="comparison-point negative">
+                            <span class="icon">✕</span>
+                            <span>No action plan</span>
+                        </div>
+                        <div class="comparison-point negative">
+                            <span class="icon">✕</span>
+                            <span>Can't find what matters</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <span class="comparison-badge after">After</span>
+                    <div class="tools-display">
+                        <img src="Assets/orin.app.iconfullapporin@2x.png" alt="Orin" class="orin-logo-large">
+                    </div>
+                    <div class="comparison-list">
+                        <div class="comparison-point positive">
+                            <span class="icon">✓</span>
+                            <span>Everything organized automatically</span>
+                        </div>
+                        <div class="comparison-point positive">
+                            <span class="icon">✓</span>
+                            <span>Zero effort to maintain</span>
+                        </div>
+                        <div class="comparison-point positive">
+                            <span class="icon">✓</span>
+                            <span>Search YOUR own mind</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third Section - Capture Methods -->
+    <section class="section-three">
+        <div class="capture-container">
+            <h2 class="capture-title">Clear your mind,<br><em>instantly.</em></h2>
+            <p class="capture-tagline">Just think it.</p>
+            <p class="capture-description">Your thoughts organized the moment they arrive,<br>so you can focus on what matters.</p>
+
+            <div class="capture-grid">
+                <div class="capture-card">
+                    <div class="capture-visual">
+                        <div class="method-icon voice">🎤</div>
+                    </div>
+                    <h3 class="capture-method">Brain dump</h3>
+                    <p class="capture-detail">Speak naturally, we'll organize it.</p>
+                </div>
+
+                <div class="capture-card">
+                    <div class="capture-visual">
+                        <div class="method-icon type">✍️</div>
+                    </div>
+                    <h3 class="capture-method">Ask your mind</h3>
+                    <p class="capture-detail">Type it or Speak it. We will instantly sort it.</p>
+                </div>
+
+                <div class="capture-card">
+                    <div class="capture-visual">
+                        <div class="method-icon sync">⚡</div>
+                    </div>
+                    <h3 class="capture-method">Begin task</h3>
+                    <p class="capture-detail">Across all your devices, effortlessly.</p>
+                </div>
+            </div>
         </div>
     </section>
 

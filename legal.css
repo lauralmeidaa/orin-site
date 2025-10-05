@@ -1,0 +1,130 @@
+/* Legal Page Styles */
+
+.legal-section {
+    min-height: 100vh;
+    background: var(--white);
+    padding: calc(120px + var(--spacing-xl)) var(--spacing-md) var(--spacing-2xl);
+}
+
+.legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.legal-document {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.legal-main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -2px;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--black);
+}
+
+.legal-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: var(--spacing-md);
+}
+
+.legal-date {
+    font-size: 0.9375rem;
+    color: var(--gray-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.legal-section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -1px;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.legal-subsection-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.legal-text {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: var(--spacing-md);
+}
+
+.legal-list {
+    list-style: disc;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.legal-list li {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.legal-link {
+    color: var(--black);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.legal-link:hover {
+    opacity: 0.6;
+}
+
+.legal-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    margin: var(--spacing-2xl) 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal-section {
+        padding: calc(100px + var(--spacing-md)) var(--spacing-md) var(--spacing-xl);
+    }
+
+    .legal-main-title {
+        font-size: 2.5rem;
+    }
+
+    .legal-section-title {
+        font-size: 1.5rem;
+    }
+
+    .legal-subsection-title {
+        font-size: 1.125rem;
+    }
+
+    .legal-text, .legal-list li, .legal-intro {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-main-title {
+        font-size: 2rem;
+    }
+
+    .legal-section-title {
+        font-size: 1.375rem;
+    }
+
+    .legal-text, .legal-list li, .legal-intro {
+        font-size: 0.9375rem;
+    }
+}

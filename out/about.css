@@ -1,0 +1,61 @@
+/* About Page Styles */
+
+.about-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: linear-gradient(135deg, #6B5B95 0%, #8B7AB8 50%, #B8A9D6 100%);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+.about-content {
+    text-align: left;
+    max-width: 900px;
+}
+
+.about-heading {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    letter-spacing: -2px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--white);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-text em {
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-hero {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .about-heading {
+        font-size: 2.5rem;
+    }
+
+    .about-text {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-heading {
+        font-size: 2rem;
+    }
+
+    .about-text {
+        font-size: 1.125rem;
+    }
+}

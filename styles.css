@@ -8,6 +8,13 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Workbench';
+    src: url('Workbench-Regular-VariableFont_BLED,SCAN.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     /* Minimalist Color Palette */
     --white: #ffffff;
@@ -139,9 +146,27 @@ body {
     padding: 0 var(--spacing-md);
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background-image: url('Assets/orinAI-motion.gif');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 1;
+}
+
 .hero-content {
     text-align: center;
     max-width: 800px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-title {
@@ -153,19 +178,19 @@ body {
     letter-spacing: -2px;
 }
 
-.chaos-img {
-    height: 4rem;
-    vertical-align: baseline;
-    margin: 0 0.25rem;
+.chaos {
+    font-family: 'Workbench', monospace;
+    font-size: 4.25rem;
     position: relative;
-    top: 1.1rem;
+    top: 0.15rem;
+    margin: 0 0.5rem;
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.5;
-    color: var(--gray-light);
+    color: var(--black);
     margin-bottom: var(--spacing-xl);
     max-width: 600px;
     margin-left: auto;
@@ -174,38 +199,322 @@ body {
 
 
 /* ============================================
-   Second Section
+   Waitlist Modal - Glassmorphic
+   ============================================ */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: var(--spacing-xl);
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--black);
+    transition: opacity 0.2s ease;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    opacity: 0.6;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -1px;
+}
+
+.modal-subtitle {
+    font-size: 1rem;
+    color: var(--gray-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.email-input {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--black);
+    background: var(--white);
+}
+
+.submit-button {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   Second Section - Before/After Comparison
    ============================================ */
 
 .section-two {
     min-height: 100vh;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 0 var(--spacing-md);
+    margin-top: -4rem;
+}
+
+.comparison-container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.comparison-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-xl);
+    color: var(--black);
+    letter-spacing: -2px;
+}
+
+.comparison-title em {
+    font-style: italic;
+    font-weight: 700;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.comparison-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.comparison-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-lg);
+}
+
+.comparison-badge.before {
+    background: #666;
+    color: var(--white);
+}
+
+.comparison-badge.after {
+    background: #0000ff;
+    color: var(--white);
+}
+
+.tools-display {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    min-height: 120px;
+}
+
+.tool-item {
+    font-size: 4rem;
+}
+
+.app-icon {
+    width: 70px;
+    height: 70px;
+}
+
+.app-icon[alt="Notes App"] {
+    mix-blend-mode: multiply;
+}
+
+.orin-logo-large {
+    width: 100px;
+    height: 100px;
+}
+
+.comparison-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.comparison-point {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.125rem;
+}
+
+.comparison-point .icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.comparison-point.negative .icon {
+    color: #ff0000;
+}
+
+.comparison-point.positive .icon {
+    color: #00cc00;
+}
+
+/* ============================================
+   Third Section - Capture Methods
+   ============================================ */
+
+.section-three {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
     justify-content: center;
     background: var(--white);
     padding: var(--spacing-xl) var(--spacing-md);
 }
 
-.section-categories {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
+.capture-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
+    text-align: center;
 }
 
-.category-item {
-    font-size: 5rem;
+.capture-title {
+    font-size: 4rem;
     font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
     color: var(--black);
     letter-spacing: -2px;
-    margin: 0;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
 }
 
-.category-item:hover {
-    opacity: 0.6;
+.capture-title em {
+    font-style: italic;
+    font-weight: 700;
+}
+
+.capture-tagline {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gray-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.capture-description {
+    font-size: 1.125rem;
+    color: var(--gray-light);
+    margin-bottom: var(--spacing-2xl);
+    line-height: 1.6;
+}
+
+.capture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.capture-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.capture-visual {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+    background: var(--gray-bg);
+    border-radius: 20px;
+}
+
+.method-icon {
+    font-size: 5rem;
+}
+
+.capture-method {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: var(--spacing-sm);
+}
+
+.capture-detail {
+    font-size: 1.125rem;
+    color: var(--gray-light);
 }
 
 /* ============================================
@@ -230,9 +539,9 @@ body {
         letter-spacing: -1px;
     }
 
-    .chaos-img {
-        height: 2.5rem;
-        top: 0.7rem;
+    .chaos {
+        font-size: 2.5rem;
+        top: 0.1rem;
     }
 
     .hero-subtitle {
@@ -244,8 +553,65 @@ body {
         font-size: 0.9375rem;
     }
 
-    .category-item {
+    .comparison-title {
+        font-size: 2.5rem;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .tool-item {
         font-size: 3rem;
+    }
+
+    .app-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .orin-logo-large {
+        width: 100px;
+        height: 100px;
+    }
+
+    .comparison-point {
+        font-size: 1rem;
+    }
+
+    .capture-title {
+        font-size: 2.5rem;
+    }
+
+    .capture-tagline {
+        font-size: 1.25rem;
+    }
+
+    .capture-description {
+        font-size: 1rem;
+    }
+
+    .capture-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .capture-visual {
+        width: 180px;
+        height: 180px;
+    }
+
+    .method-icon {
+        font-size: 4rem;
+    }
+
+    .capture-method {
+        font-size: 1.25rem;
+    }
+
+    .capture-detail {
+        font-size: 1rem;
     }
 }
 
@@ -267,16 +633,75 @@ body {
         font-size: 2rem;
     }
 
-    .chaos-img {
-        height: 2rem;
-        top: 0.55rem;
+    .chaos {
+        font-size: 2rem;
+        top: 0.08rem;
     }
 
     .hero-subtitle {
         font-size: 1rem;
     }
 
-    .category-item {
+    .comparison-title {
+        font-size: 2rem;
+    }
+
+    .tool-item {
         font-size: 2.5rem;
+    }
+
+    .app-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .orin-logo-large {
+        width: 80px;
+        height: 80px;
+    }
+
+    .comparison-point {
+        font-size: 0.9375rem;
+    }
+
+    .capture-title {
+        font-size: 2rem;
+    }
+
+    .capture-tagline {
+        font-size: 1.125rem;
+    }
+
+    .capture-description {
+        font-size: 0.9375rem;
+    }
+
+    .capture-visual {
+        width: 150px;
+        height: 150px;
+    }
+
+    .method-icon {
+        font-size: 3rem;
+    }
+
+    .capture-method {
+        font-size: 1.125rem;
+    }
+
+    .capture-detail {
+        font-size: 0.9375rem;
+    }
+
+    .modal-content {
+        padding: var(--spacing-lg);
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.9375rem;
     }
 }
